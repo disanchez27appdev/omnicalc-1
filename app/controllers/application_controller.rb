@@ -33,11 +33,12 @@ end
 
 def blank_payment_results
   @present_value      = params.fetch("principal_input").to_f
-  @rate               = params.fetch("apr_input").to_f/100
+  @rate               = params.fetch("apr_input").to_f
+  @rate_for_calc      = params.fetch("apr_input").to_f/100
   @number_of_periods  = params.fetch("periods_input").to_f
 
-  @numerator = @present_value.to_f*@rate.to_f/12
-  @denominator = (1-((1+(@rate.to_f/12)) ** (@number_of_periods.to_f*-12)).to_f)
+  @numerator = @present_value.to_f*@rate_for_calc.to_f/12
+  @denominator = (1-((1+(@rate_for_calc.to_f/12)) ** (@number_of_periods.to_f*-12)).to_f)
   @payment = @numerator.to_f/@denominator.to_f
 
   render ({ :template => "calculation_templates/payment_form_results.html.erb"})

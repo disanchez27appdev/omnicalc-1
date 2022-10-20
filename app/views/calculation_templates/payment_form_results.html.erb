@@ -5,25 +5,25 @@
   APR 
   </dt>
     <dd>
-    <%=@rate%>
+    <%=@rate.round(4).to_s(:percentage)%>
     </dd>
   <dt>
   Number of years 
   </dt>
     <dd>
-    <%=@number_of_periods%>
+    <%=@number_of_periods.to_i%>
     </dd>
   </dt>
   Principal 
   </dt>
     <dd>
-    <%=@present_value%>
+    <%=@present_value.to_s(:currency)%>
     </dd>
   </dt>
   Payment 
   </dt>
     <dd>
-    <%=@payment%>
+    <%=@payment.to_s(:currency)%>
     </dd>
   </dt>
 </dl>
